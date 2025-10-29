@@ -69,10 +69,10 @@
             "icons": [{ "src": "./assets/images/icons/icon-96x96.png", "sizes": "96x96" }]
         },
         {
-            "name": "WhatsApp",
-            "short_name": "WhatsApp",
-            "description": "Falar no WhatsApp",
-            "url": "https://wa.me/5511991305728",
+            "name": "Email",
+            "short_name": "Email",
+            "description": "Enviar email",
+            "url": "mailto:victorPT@gmail.com",
             "icons": [{ "src": "./assets/images/icons/icon-96x96.png", "sizes": "96x96" }]
         }
     ],

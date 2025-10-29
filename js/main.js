@@ -209,16 +209,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     plan: 'personalizado'
                 };
                 
-                // Redirecionar para WhatsApp com os dados
+                // Redirecionar para email com os dados
                 const nome = formData.name;
                 const email = formData.email;
                 const telefone = formData.phone;
                 
-                const mensagem = `Olá! Meu nome é ${nome}. Gostaria de agendar uma consultoria do Projeto Invicto.%0A%0AContatos:%0AEmail: ${email}%0ATelefone: ${telefone}%0A%0AObrigado!`;
+                const assunto = 'Consultoria Projeto Invicto';
+                const corpo = `Olá!%0A%0AMeu nome é ${nome}.%0AGostaria de agendar uma consultoria do Projeto Invicto.%0A%0AContatos:%0AEmail: ${email}%0ATelefone: ${telefone}%0A%0AObrigado!`;
                 
-                window.open(`https://wa.me/5511991305728?text=${mensagem}`, '_blank');
+                window.open(`mailto:invicto.performance@gmail.com?subject=${assunto}&body=${corpo}`, '_blank');
                 
-                showSuccessMessage('Redirecionando para WhatsApp...');
+                showSuccessMessage('Redirecionando para email...');
                 this.reset();
                 
             } catch (error) {
