@@ -23,8 +23,9 @@
     <meta property="twitter:image" content="https://projeto-invicto.com.br/assets/images/og-image.jpg">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/images/logo.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/icons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icons/apple-touch-icon.png">
     
     <!-- PWA Manifest -->
     <link rel="manifest" href="manifest.json">
@@ -482,7 +483,7 @@
                 <input type="email" placeholder="MELHOR E-MAIL PARA CONTATO" required
                        class="w-full p-4 bg-black border-2 border-gray-700 text-white placeholder-gray-500 rounded-sm focus:border-[#A9A938] font-body uppercase text-sm">
                 
-                <input type="tel" placeholder="WHATSAPP (COM DDD)" required
+                <input type="tel" placeholder="(11) 99999-9999" required maxlength="15" pattern="\([0-9]{2}\) [0-9]{5}-[0-9]{4}"
                        class="w-full p-4 bg-black border-2 border-gray-700 text-white placeholder-gray-500 rounded-sm focus:border-[#A9A938] font-body uppercase text-sm">
 
                 <button type="submit" class="btn-primary w-full text-lg mt-6">

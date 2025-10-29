@@ -152,6 +152,27 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.querySelector('#contact-form');
     
     if (contactForm) {
+        // Formatação automática do telefone
+        const phoneInput = contactForm.querySelector('input[type="tel"]');
+        if (phoneInput) {
+            phoneInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                
+                if (value.length >= 11) {
+                    value = value.substring(0, 11);
+                    value = value.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+                } else if (value.length >= 7) {
+                    value = value.replace(/(\d{2})(\d{4,5})(\d{0,4})/, '($1) $2-$3');
+                } else if (value.length >= 3) {
+                    value = value.replace(/(\d{2})(\d{0,5})/, '($1) $2');
+                } else if (value.length >= 1) {
+                    value = value.replace(/(\d{0,2})/, '($1');
+                }
+                
+                e.target.value = value;
+            });
+        }
+        
         // Validação em tempo real
         const inputs = contactForm.querySelectorAll('input, textarea');
         inputs.forEach(input => {
@@ -325,7 +346,7 @@ function isValidEmail(email) {
 }
 
 function isValidPhone(phone) {
-    return /^\(?\d{2}\)?[\s-]?\d{4,5}[\s-]?\d{4}$/.test(phone);
+    return /^\(\d{2}\) \d{5}-\d{4}$/.test(phone);
 }
 
 function showSuccessMessage(message) {
