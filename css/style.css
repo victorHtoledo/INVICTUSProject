@@ -1,0 +1,325 @@
+/* Projeto Invicto - Estilos Principais */
+
+/* Variáveis CSS */
+:root {
+    --color-olive: #A9A938;
+    --color-charcoal: #1A1A1A;
+}
+
+/* Fontes customizadas */
+.font-title { 
+    font-family: 'Bebas Neue', sans-serif; 
+}
+
+.font-body { 
+    font-family: 'Montserrat', sans-serif; 
+}
+
+/* Estilização do corpo com textura de fundo */
+body {
+    background-color: #000000;
+    background-image: radial-gradient(#1a1a1a 1px, transparent 1px),
+                      radial-gradient(#1a1a1a 1px, transparent 1px);
+    background-size: 10px 10px;
+    background-position: 0 0, 5px 5px;
+    color: white;
+}
+
+/* Botão principal com bordas angulares */
+.btn-primary {
+    background-color: var(--color-olive);
+    color: #000000;
+    padding: 1rem 2.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: 3px solid var(--color-olive);
+    transition: all 0.3s ease;
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 80% 100%, 0 100%);
+}
+
+.btn-primary:hover {
+    background-color: #000000;
+    color: var(--color-olive);
+}
+
+/* Ícones táticos de divisão */
+.divider-icon {
+    color: var(--color-olive);
+    margin: 2rem 0;
+}
+
+/* Efeito de sobreposição para Hero Section */
+.hero-overlay {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9));
+}
+
+/* Estilo para formulários */
+input:focus, textarea:focus {
+    border-color: var(--color-olive) !important;
+    box-shadow: 0 0 0 1px var(--color-olive) !important;
+}
+
+/* Menu mobile */
+.mobile-menu {
+    display: none;
+}
+
+.mobile-menu.active {
+    display: block;
+}
+
+/* Animações */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Estilos para FAQ */
+.faq-item {
+    border-radius: 8px;
+    border: 2px solid #374151;
+    background-color: #111;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.faq-item.active {
+    border-color: #A9A938;
+}
+
+.faq-item .faq-question {
+    border-radius: 6px;
+}
+
+.faq-item .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease;
+    background-color: #111;
+    padding: 0 1.5rem;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 300px;
+    padding: 1.5rem;
+}
+
+.faq-item .faq-icon {
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(180deg);
+}
+
+/* Estilos para planos */
+.plan-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plan-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(169, 169, 56, 0.1);
+}
+
+/* Loading states */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid var(--color-olive);
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Scroll to top button */
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--color-olive);
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-to-top:hover {
+    background-color: #fff;
+    transform: translateY(-2px);
+}
+
+/* Header scrolled state */
+header.scrolled {
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Form improvements */
+input[type="text"], 
+input[type="email"], 
+input[type="tel"], 
+textarea {
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus, 
+input[type="email"]:focus, 
+input[type="tel"]:focus, 
+textarea:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(169, 169, 56, 0.2);
+}
+
+/* Success message */
+.success-message {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--color-olive);
+    color: #000;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    font-weight: bold;
+    z-index: 1000;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.success-message.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Responsividade adicional */
+@media (max-width: 768px) {
+    .btn-primary {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .hero-overlay {
+        background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.95));
+    }
+    
+    .scroll-to-top {
+        bottom: 15px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+    }
+}
+
+/* Performance optimizations */
+* {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Accessibility improvements */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Menu link styles */
+.menu-link {
+    position: relative;
+    transition: all 0.2s ease;
+    outline: none !important;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.menu-link:hover {
+    text-decoration: underline;
+    transform: scale(1.05);
+}
+
+.menu-link:focus,
+.menu-link:active {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* Remove all outlines globally */
+* {
+    outline: none !important;
+}
+
+*:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Focus styles only for accessibility when needed */
+a:focus-visible, 
+button:focus-visible {
+    outline: 2px solid var(--color-olive);
+    outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+}
