@@ -85,5 +85,30 @@
     "widgets": [],
     "edge_side_panel": {
         "preferred_width": 400
+    },
+    "screenshots": [
+        {
+            "src": "./assets/images/screenshot-desktop.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "Projeto Invicto - Desktop"
+        },
+        {
+            "src": "./assets/images/screenshot-mobile.png",
+            "sizes": "390x844",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "Projeto Invicto - Mobile"
+        }
+    ],
+    "share_target": {
+        "action": "./contato",
+        "method": "GET",
+        "params": {
+            "title": "title",
+            "text": "text",
+            "url": "url"
+        }
     }
 }
