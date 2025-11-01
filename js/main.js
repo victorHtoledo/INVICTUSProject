@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function() {
             input.addEventListener('input', clearErrors);
         });
         
-        contactForm.addEventListener('submit', async function(e) {
+        contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
             // Validar todos os campos
@@ -193,42 +193,23 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (!isValid) return;
             
-            // Mostrar loading
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'ENVIANDO...';
-            submitBtn.disabled = true;
+            // Preparar dados do formulário
+            const formData = {
+                name: this.querySelector('input[name="name"]').value,
+                email: this.querySelector('input[name="email"]').value,
+                phone: this.querySelector('input[name="phone"]').value
+            };
             
-            try {
-                // Preparar dados do formulário
-                const formData = {
-                    name: this.querySelector('input[type="text"]').value,
-                    email: this.querySelector('input[type="email"]').value,
-                    phone: this.querySelector('input[type="tel"]').value,
-                    message: this.querySelector('textarea')?.value || '',
-                    plan: 'personalizado'
-                };
-                
-                // Redirecionar para email com os dados
-                const nome = formData.name;
-                const email = formData.email;
-                const telefone = formData.phone;
-                
-                const assunto = 'Consultoria Projeto Invicto';
-                const corpo = `Olá!%0A%0AMeu nome é ${nome}.%0AGostaria de agendar uma consultoria do Projeto Invicto.%0A%0AContatos:%0AEmail: ${email}%0ATelefone: ${telefone}%0A%0AObrigado!`;
-                
-                window.open(`mailto:invicto.performance@gmail.com?subject=${assunto}&body=${corpo}`, '_blank');
-                
-                showSuccessMessage('Redirecionando para email...');
-                this.reset();
-                
-            } catch (error) {
-                console.error('Erro no formulário:', error);
-                showErrorMessage(error.message || 'Erro ao enviar mensagem. Tente novamente.');
-            } finally {
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }
+            // Criar link de email
+            const subject = 'Nova solicitação - Projeto Invicto';
+            const body = `Olá!\n\nMeu nome é ${formData.name}.\nGostaria de agendar uma consultoria do Projeto Invicto.\n\nContatos:\nEmail: ${formData.email}\nTelefone: ${formData.phone}\n\nObrigado!`;
+            const mailtoLink = `mailto:invicto.performance@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Abrir email
+            window.location.href = mailtoLink;
+            
+            showSuccessMessage('Redirecionando para email...');
+            this.reset();
         });
     }
     
